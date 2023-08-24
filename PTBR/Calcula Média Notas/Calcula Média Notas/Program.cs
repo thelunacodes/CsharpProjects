@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Media;
-using System.Threading;
 
 namespace Calcula_Média_Notas {
     internal class Program {
@@ -27,6 +25,7 @@ namespace Calcula_Média_Notas {
                         //    nota = Convert.ToDouble(Convert.ToString(nota).Replace(',','.'));
                         //}
                         Console.WriteLine(nota);
+                        break;
                     }
                     catch (FormatException) {
                         Console.WriteLine("ERRO: Apenas números, por favor.");
@@ -57,10 +56,10 @@ namespace Calcula_Média_Notas {
                     
                     switch (opcao.ToUpper()) {
                         case "S":
-                            //UH HUH (sim)
+                            //SIM
                             break;
                         case "N":
-                            //NUH UH (não)
+                            //NÃO
                             if (listaNotas.Count != 0) {
                                 for (int i = 0; i < listaNotas.Count; i++) {
                                     soma += (listaNotas[i].Nota * listaNotas[i].Peso);
