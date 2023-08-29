@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Calcula_Média_Notas {
+namespace Calculadora_Média_Notas {
     internal class Aluno {
         public string Nome { get; set; }
         public double Nota { get; set; }

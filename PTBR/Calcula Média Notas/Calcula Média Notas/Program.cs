@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
-namespace Calcula_Média_Notas {
+namespace Calculadora_Média_Notas {
     internal class Program {
         static void Main(string[] args) {
             List<Aluno> listaNotas = new List<Aluno>();
-            string nome, opcao = "";
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-BR");
+            string nome, input, opcao = "";
             double nota, media, soma = 0;
             int peso;
 
@@ -18,13 +20,8 @@ namespace Calcula_Média_Notas {
                 do {
                     try {
                         Console.Write("Insira a nota desse aluno: ");
-                        nota = Convert.ToDouble(Console.ReadLine());
-                        //Trocar "," por "."
-                        
-                        //if (Convert.ToString(nota).Contains(",")) {
-                        //    nota = Convert.ToDouble(Convert.ToString(nota).Replace(',','.'));
-                        //}
-                        Console.WriteLine(nota);
+                        input = Console.ReadLine().Replace(".", ",");
+                        nota = Convert.ToDouble(input);
                         break;
                     }
                     catch (FormatException) {
@@ -32,25 +29,21 @@ namespace Calcula_Média_Notas {
                     }
                 } while (true);
                 //Peso
-                //do {
-                //    try {
-                //        Console.Write("Insira o peso dessa nota: ");
-                //        peso = Convert.ToInt32(Console.ReadLine());
-                //        break;
-                //    }
-                //    catch (FormatException) {
-                //        Console.WriteLine("ERRO: Apenas números inteiros, por favor.");
-                //    }
-                //} while (true);
-                peso = 1;
+                do {
+                    try {
+                        Console.Write("Insira o peso dessa nota: ");
+                        peso = Convert.ToInt32(Console.ReadLine());
+                        break;
+                    }
+                    catch (FormatException) {
+                        Console.WriteLine("ERRO: Apenas números inteiros, por favor.");
+                    }
+                } while (true);
                 //Adicionar objeto à lista
                 listaNotas.Add(new Aluno(nome, nota, peso)) ;
-                //Debug
-                //Console.WriteLine($"\nNome: {nome}\nNota: {nota}\nPeso: {peso}");
-                Console.WriteLine(listaNotas.Count);
                 // Continuar?
                 do {
-                    Console.WriteLine("\nDeseja adicionar mais notas? (S para \"sim\" e N para \"não\").");
+                    Console.WriteLine("\nDeseja adicionar mais notas? (S para \"sim\" ou N para \"não\").");
                     Console.Write("> ");
                     opcao = Console.ReadLine();
                     
@@ -77,15 +70,14 @@ namespace Calcula_Média_Notas {
                             break;
                         default:
                             //Opção inválida
-                            Console.WriteLine("ERRO: Opção inválida.");
+                            Console.WriteLine("ERRO: Input inválido.");
                             break;
                     }
-                    //Não dar "break" se o usuário inseriu uma opção inválida
                     if ((opcao.ToUpper()).Equals("N") || (opcao.ToUpper()).Equals("S")) {
                         break;
                     }
                 } while (true);
-                //Quebrar o do while loop se o usuário escolheu não inserir mais notas
+                //Break de encerramento
                 if ((opcao.ToUpper()).Equals("N")) {
                     break;
                 }
