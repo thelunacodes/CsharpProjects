@@ -6,7 +6,6 @@ namespace Average_Score_Calculator {
     internal class Program {
         static void Main(string[] args) {
             List<Student> scoreList = new List<Student>();
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-BR");
             string name, input, opcao = "";
             double score, average, sum = 0;
             int weight;
@@ -20,7 +19,7 @@ namespace Average_Score_Calculator {
                 do {
                     try {
                         Console.Write("Insert the student's score: ");
-                        input = Console.ReadLine().Replace(".", ",");
+                        input = Console.ReadLine().Replace(",", ".");
                         score = Convert.ToDouble(input);
                         break;
                     }
