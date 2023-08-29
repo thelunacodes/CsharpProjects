@@ -5,6 +5,7 @@ namespace Calculadora_de_Volume_Geral {
     internal class Program {
         static void Main(string[] args) {
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-BR");
+            string input = "";
             int opcao;
             double aresta, raio, volume, apotema, altura, comprimento, largura, alturaBase, comprimentoBase;
 
@@ -172,11 +173,13 @@ namespace Calculadora_de_Volume_Geral {
         }
         //Método pra receber input e lidar com erros
         public static double InputMensagem(String msg) {
+            string input = "";
             double atributo = 0;
             do {
                 try {
                     Console.Write(msg);
-                    atributo = Convert.ToDouble(Console.ReadLine());
+                    input = Console.ReadLine().Replace(".", ",");
+                    atributo = Convert.ToDouble(input);
                     return atributo;
                 }
                 catch (FormatException) {
