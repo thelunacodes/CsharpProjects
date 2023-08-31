@@ -158,7 +158,7 @@ namespace Volume_Calculator {
                     Console.WriteLine("Invalid option!");
                     break;
             }
-            Console.WriteLine("\nObs: \"um\" = unity of measurement");
+            Console.WriteLine("\nP.S: \"um\" = unity of measurement");
         }
         //Method to receive user input and deal with any exception
         public static double DimensionsInput(String msg) {
