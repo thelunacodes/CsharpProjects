@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculadora de Volume Geral", "Calculadora de Volume Geral\Calculadora de Volume Geral.csproj", "{34EDFB90-9C44-4EDB-8D4A-1B62F737C324}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Volume Calculator", "Volume Calculator\Volume Calculator.csproj", "{01237481-AE38-4B7F-9447-4E65E55A2AD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{34EDFB90-9C44-4EDB-8D4A-1B62F737C324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34EDFB90-9C44-4EDB-8D4A-1B62F737C324}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34EDFB90-9C44-4EDB-8D4A-1B62F737C324}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34EDFB90-9C44-4EDB-8D4A-1B62F737C324}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01237481-AE38-4B7F-9447-4E65E55A2AD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01237481-AE38-4B7F-9447-4E65E55A2AD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01237481-AE38-4B7F-9447-4E65E55A2AD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01237481-AE38-4B7F-9447-4E65E55A2AD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0E51548D-563A-46ED-8DE1-7FAE426A3453}
+		SolutionGuid = {CDA6E4DE-CEE7-4D05-AAD2-9FB5308B1784}
 	EndGlobalSection
 EndGlobal
