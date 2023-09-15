@@ -7,14 +7,21 @@ using System.Threading;
 namespace Sistema_Aluguel_Bike {
     internal class Program {
         static int opcao0 = 0, opcao1 = 0, opcao2 = 0, opcao3 = 0, opcao4 = 0, opcao4_b;
+        //bike
         static string modeloBike = "", tamanhoBike = "", corBike = "";
+        static double valAluguelBike = 0, valDepositoBike = 0;
+        static bool disponivelBike = true;
+        static string novoNome = "", novoTamanho = "", novaCor = "";
+        static double novoValAluguel = 0, novoValDeposito = 0;
+        static bool novoDisponivel = true;
+        //erros
         static string opcaoInvalidaString = "ERRO: Opção inválida!";
         static string listaVaziaString = "ERRO: Lista vazia!";
+        //caminho arquivo
         const string NOME_ARQUIVO = "bikes.csv";
-        const string DIRETORIO = @"C:\Users\gabriel.luna\Desktop";
+        const string DIRETORIO = @"C:\Users\gabriel.luna\Desktop\";
         static string caminho = Path.Combine(DIRETORIO, NOME_ARQUIVO);
-        static bool disponivelBike;
-        static double valAluguelBike, valDepositoBike;
+        
         static List<Bicicleta> listaBicicletas = new List<Bicicleta>();
         static List<Cliente> listaClientes = new List<Cliente>();
         static List<Funcionario> listaFuncionarios = new List<Funcionario>();
@@ -172,7 +179,7 @@ namespace Sistema_Aluguel_Bike {
                 listaLinhas = File.ReadAllLines(caminho).ToList<string>();
             }
             catch (Exception exception1) {
-                Console.WriteLine(exception1);
+                Console.WriteLine(exception1.Message);
             }
         }
 
@@ -193,10 +200,34 @@ namespace Sistema_Aluguel_Bike {
             }
         }
 
+        //Acessar informações pelo ID 
+        public static void ListarBikesPeloID() {
+            opcao4_b = InputInt("\nInsira o ID da bicicleta: ") - 1;
+            if (opcao4_b < 0 || opcao4_b > listaBicicletas.Count) {
+                Console.WriteLine(opcaoInvalidaString);
+            }
+            else {
+                Console.WriteLine("\nID: " + listaBicicletas[opcao4_b].Id);
+                Console.WriteLine("Modelo: " + listaBicicletas[opcao4_b].Modelo);
+                Console.WriteLine("Tamanho: " + listaBicicletas[opcao4_b].Tamanho);
+                Console.WriteLine("Cor: " + listaBicicletas[opcao4_b].Cor);
+                Console.WriteLine("Aluguel: R$ " + String.Format("{0:0.00}", listaBicicletas[opcao4_b].ValAluguel));
+                Console.WriteLine("Depósito: R$ " + String.Format("{0:0.00}", listaBicicletas[opcao4_b].ValDeposito));
+                if (listaBicicletas[opcao4_b].Disponivel) {
+                    Console.WriteLine("Disponível: sim");
+                }
+                else {
+                    Console.WriteLine("Disponível: não");
+                }
+            }
+            Thread.Sleep(2500);
+        }
+
         //Listar Bikes
         public static void ListarBikes() {
             if (listaBicicletas.Count == 0) {
-                Console.WriteLine(listaVaziaString);
+                Console.WriteLine("\n" + listaVaziaString + "\n");
+                Thread.Sleep(2500);
             }
             else {
                 int minIndex = 0;
@@ -225,35 +256,35 @@ namespace Sistema_Aluguel_Bike {
                             }
                             //OPÇÕES DE INPUT
                             Console.WriteLine("\n\nInsira o número correspondente à opção desejada: \n");
-                            Console.WriteLine("[1] Acessar informações de uma bicicleta pelo ID \n[2] Remover bicicleta da lista \n[4] Página anterior \n[5] Próxima página \n[6] Sair");
+                            Console.WriteLine("[1] Acessar informações de uma bicicleta pelo ID \n[2] Remover bicicleta da lista \n[4] Página anterior \n[5] Próxima página \n[6] Editar bicicleta\n[7] Sair");
                             opcao4 = InputInt("\n> ");
                             break;
                         case 1:
                             //ACESSAR INFORMAÇÕES PELO ID
-                            opcao4_b = InputInt("\nInsira o ID da bicicleta: ");
-                            if (opcao4_b < 0 || opcao4_b > listaBicicletas.Count - 1) {
-                                Console.WriteLine(opcaoInvalidaString);
-                            }
-                            else {
-                                Console.WriteLine("\nID: " + listaBicicletas[opcao4_b].Id);
-                                Console.WriteLine("Modelo: " + listaBicicletas[opcao4_b].Modelo);
-                                Console.WriteLine("Tamanho: " + listaBicicletas[opcao4_b].Tamanho);
-                                Console.WriteLine("Cor: " + listaBicicletas[opcao4_b].Cor);
-                                Console.WriteLine("Aluguel: R$ " + String.Format("{0:0.00}", listaBicicletas[opcao4_b].ValAluguel));
-                                Console.WriteLine("Depósito: R$ " + String.Format("{0:0.00}", listaBicicletas[opcao4_b].ValDeposito));
-                                if (listaBicicletas[opcao4_b].Disponivel) {
-                                    Console.WriteLine("Disponível: sim");
-                                }
-                                else {
-                                    Console.WriteLine("Disponível: não");
-                                }
-                            }
-                            Thread.Sleep(2500);
+                            ListarBikesPeloID();
+                            opcao4 = 0;
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            //SAIR
                             break;
                         default:
                             Console.WriteLine(opcaoInvalidaString);
                             break;
 
+                    }
+                    if (opcao4 == 7) {
+                        //sair
+                        break;
                     }
                 } while (true);
             }
